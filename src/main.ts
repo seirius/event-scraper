@@ -8,6 +8,7 @@ import { LoggerConfig } from "./config/LoggerConfig";
 async function bootstrap() {
     const app = await NestFactory.create(AppModule, {
         logger: LoggerConfig.LEVEL as any,
+        cors: {}
     });
 
     const options = new DocumentBuilder()

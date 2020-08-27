@@ -1,8 +1,6 @@
 import { Controller, Get, HttpStatus, Param } from "@nestjs/common";
 import { ApiResponse } from "@nestjs/swagger";
-import axios from "axios";
-import * as cheerio from "cheerio";
-import { SearchService } from "./SearchService";
+import { SearchService, ScrappedEvent } from "./SearchService";
 
 @Controller("search")
 export class SearchController {
@@ -20,7 +18,7 @@ export class SearchController {
     })
     searchByQuery(
         @Param("query") query: string
-    ): Promise<string[]> {
+    ): Promise<ScrappedEvent[]> {
         return this.searchService.getNotikumiEvents(query);
     }
 
