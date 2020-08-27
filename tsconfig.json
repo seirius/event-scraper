@@ -1,21 +1,15 @@
 {
-    "compilerOptions": {
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "lib": ["es2018"],
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "outDir": "lib",
-      "preserveConstEnums": true,
-      "removeComments": false,
-      "sourceMap": true,
-      "target": "es2018",
-      "declaration": true
-    },
-    "exclude": [
-      "lib",
-      "gulpfile.*",
-      "node_modules/*"
-    ]
-  }
-  
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true
+  },
+  "exclude": ["node_modules", "dist"]
+}
