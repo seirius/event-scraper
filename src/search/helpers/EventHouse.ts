@@ -1,4 +1,5 @@
 export enum EventHouse {
     NOTIKUMI = "notikumi",
-    WEGOW = "wegow"
+    WEGOW = "wegow",
+    TICKETMASTER = "ticketmaster"
 }

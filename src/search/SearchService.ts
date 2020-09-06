@@ -3,6 +3,7 @@ import { ScrappedEvent } from "./helpers/ScrappedEvent";
 import { NotikumiService } from "./NotikumiService";
 import { WegowService } from "./WegowService";
 import { EventHouse } from "./helpers/EventHouse";
+import { TicketmasterService } from "./TicketmasterService";
 
 @Injectable()
 export class SearchService {
@@ -10,6 +11,7 @@ export class SearchService {
     constructor(
         private notikumiService: NotikumiService,
         private wegowService: WegowService,
+        private ticketmasterService: TicketmasterService
     ) {}
 
     public async getScrappedEvents(query: string, houses: EventHouse[] = []): Promise<ScrappedEvent[]> {
@@ -17,12 +19,16 @@ export class SearchService {
         if (!houses.length) {
             houseRequests.push(this.notikumiService.getNotikumiEvents(query));
             houseRequests.push(this.wegowService.getWegowEvents(query));
+            houseRequests.push(this.ticketmasterService.getTicketmasterEvents(query));
         } else {
             if (houses.includes(EventHouse.WEGOW)) {
                 houseRequests.push(this.wegowService.getWegowEvents(query));
             }
             if (houses.includes(EventHouse.NOTIKUMI)) {
                 houseRequests.push(this.notikumiService.getNotikumiEvents(query));
+            }
+            if (houses.includes(EventHouse.TICKETMASTER)) {
+                houseRequests.push(this.ticketmasterService.getTicketmasterEvents(query));
             }
         }
 
