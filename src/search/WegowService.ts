@@ -36,7 +36,6 @@ export class WegowService {
         return events.map(wegowEventToScrappedEvent);
     }
 
-
 }
 
 export function wegowEventToScrappedEvent({
@@ -54,11 +53,12 @@ export function wegowEventToScrappedEvent({
         type: EventHouse.WEGOW,
         title,
         img: image_url,
-        date: {
-            multipleSessions: false,
-            dates: [new Date(start_date)]
-        },
-        direction: `${country}, ${administrative_division}, ${name}`,
+        instances: [
+            {
+                dates: [new Date(start_date)],
+                address: `${country}, ${administrative_division}, ${name}`
+            }
+        ],
         url: purchase_url
     };
 }

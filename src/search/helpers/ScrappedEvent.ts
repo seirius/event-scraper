@@ -4,10 +4,9 @@ export interface ScrappedEvent {
     type: EventHouse;
     title: string;
     img: string;
-    date: {
-        multipleSessions: boolean;
-        dates: Date[];
-    }
-    direction: string;
     url: string;
+    instances: {
+        dates: Date[];
+        address: string;
+    }[];
 }

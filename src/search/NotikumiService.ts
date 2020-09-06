@@ -33,24 +33,22 @@ export class NotikumiService {
             const day = Number.parseInt($element.find(".day").text()?.trim());
             const month = $element.find(".month").text()?.trim();
             let fullDate: Date;
-            let multipleSessions = true;
             if (month !== "varias") {
-                multipleSessions = false;
                 const monthIndex = MONTHS.findIndex(monthLiteral => monthLiteral === month);
                 fullDate = new Date(Date.UTC(currentDate.getFullYear(), monthIndex, day));
             }
-            const date = {
-                multipleSessions,
-                dates: [fullDate]
-            };
-            const direction = $element.find(".dnd").text()?.replace(/\s\s+/g, ' ').trim();
+            const address = $element.find(".dnd").text()?.replace(/\s\s+/g, ' ').trim();
             const url = $element.find(".url").attr("href");
             scrappedEvents.push({
                 type: EventHouse.NOTIKUMI,
                 title,
                 img,
-                date,
-                direction,
+                instances: [
+                    {
+                        dates: [fullDate],
+                        address
+                    }
+                ],
                 url
             });
         });
